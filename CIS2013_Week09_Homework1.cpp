@@ -8,6 +8,7 @@ char codelet [27];
 int codenum [27];
 char num [27]={'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
 string message;
+string abc="abcdefghijklmnopqrstuvwxyz ";
 
 int main(){
 	char encrypt_or_decrypt;
@@ -59,21 +60,28 @@ void load_file(){
 }
 
 int encrypt(){
+	
+	cout << "Enter your message:\n";
+	cin.ignore();
+	getline(cin, message);
+	int result;
+	
 	int a = message.length();
 	int msg_num[a];
-	cout << "Enter your message:\n";
-	getline(cin, message);
-	getline(cin, message);
+	
 	for (int i=0; i<=a; i++){
 		for (int x=0; x<=26; x++){
-			if (num[x]==message[i]){
+			if (abc[x]==message[i]){
 				msg_num[i]=x+1;
 			}
 		}
 	}
-	cout << msg_num;
-	return 0;
+	for (int i=0; i<a; i++){
+		result = (msg_num[i]+codenum[i])%27;
+		cout << num[result-1];
+	}
 }
+
 void decrypt(){cout << "decrypting...";}
 
 void code_convert(){
