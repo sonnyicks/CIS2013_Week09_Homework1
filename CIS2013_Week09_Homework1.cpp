@@ -4,10 +4,10 @@
 
 using namespace std;
 
-char codelet [28];
-int codenum [28];
+char codelet [27];
+int codenum [27];
 char num [27]={'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
-
+string message;
 
 int main(){
 	char encrypt_or_decrypt;
@@ -59,25 +59,29 @@ void load_file(){
 }
 
 int encrypt(){
-	string message;
-	
+	int a = message.length();
+	int msg_num[a];
 	cout << "Enter your message:\n";
 	getline(cin, message);
 	getline(cin, message);
-	cout << num[3];
+	for (int i=0; i<=a; i++){
+		for (int x=0; x<=26; x++){
+			if (num[x]==message[i]){
+				msg_num[i]=x+1;
+			}
+		}
+	}
+	cout << msg_num;
 	return 0;
 }
 void decrypt(){cout << "decrypting...";}
 
 void code_convert(){
-	for (int i=0; i<=27; i++){
-		for (int x=0; x<=27; x++){
+	for (int i=0; i<=26; i++){
+		for (int x=0; x<=26; x++){
 			if (num[x]==codelet[i]){
-				codenum[i]=x;
+				codenum[i]=x+1;
+			}
 		}
-		}
-	}
-	for (int y=0; y<=27; y++){
-		cout << codenum[y] << " ";
 	}
 }
