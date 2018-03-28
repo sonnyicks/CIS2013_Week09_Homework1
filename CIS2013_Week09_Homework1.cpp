@@ -4,8 +4,10 @@
 
 using namespace std;
 
-string code [28];
-string num="abcdefghijklmnopqrstuvwxyz ";
+char codelet [28];
+int codenum [28];
+char num [27]={'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ' };
+
 
 int main(){
 	char encrypt_or_decrypt;
@@ -14,8 +16,10 @@ int main(){
 	void load_file();
 	void decrypt();
 	int encrypt();
+	void code_convert();
 	
 	load_file();
+	code_convert();
 	
 	cout << "Enter encrypt(e) or decrypt(d) :";
 	cin >> encrypt_or_decrypt;
@@ -37,6 +41,7 @@ void load_file(){
 	ifstream encrypt;
 	char file [16];
 	bool valid_file = false;
+	char bb;
 	
 	while (valid_file==false){
 		cout << endl << "Enter file name: ";
@@ -47,18 +52,32 @@ void load_file(){
 		}
 		else {valid_file=true;}
 		for (int i=0; i<=27; i++){
-			encrypt >> code [i];
+			encrypt.get(bb);
+			codelet[i]=bb;
 		}
 	}
 }
 
 int encrypt(){
-	string a;
+	string message;
 	
 	cout << "Enter your message:\n";
-	getline(cin, a);
-	getline(cin, a);
-	cout << num[10];
+	getline(cin, message);
+	getline(cin, message);
+	cout << num[3];
 	return 0;
 }
 void decrypt(){cout << "decrypting...";}
+
+void code_convert(){
+	for (int i=0; i<=27; i++){
+		for (int x=0; x<=27; x++){
+			if (num[x]==codelet[i]){
+				codenum[i]=x;
+		}
+		}
+	}
+	for (int y=0; y<=27; y++){
+		cout << codenum[y] << " ";
+	}
+}
